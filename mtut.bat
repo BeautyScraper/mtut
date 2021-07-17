@@ -1,0 +1,1 @@
+python -c "from mutv1 import frad; frad()"

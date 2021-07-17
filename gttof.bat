@@ -1,0 +1,1 @@
+python "D:\Developed\Automation\mtut\gttof.py" --dirPath D:\paradise\stuff\new\n --exts "*.mp4" "*.mkv" --outPath D:\paradise\stuff\new\pvd2
