@@ -30,6 +30,20 @@ def moveByFastCopy(txtFileName,dstination):
     # import pdb;pdb.set_trace()
     os.system(cmd)
 
+def is_removable(dp,ignoreExtensions):
+    for ie in ignoreExtensions:
+        [fp for fp in dp.glob(ignoreExtensions)]
+    
+def redwine(dirPath,ignoreExtensions=['*.jp*g']):
+    '''remove empty dir with ignoring named extensions'''
+    if type(dirPath) != type(Path.cwd()):
+       dirPath = Path(dirPath) 
+    for dp in dirPath.rglob('*'):
+        if not dp.is_dir():
+            continue
+        if is_removable(dp,ignoreExtensions):
+            dp.rmtree()
+            
 def fileListCopy(fileList,dstination):
     if len(fileList) == 0:
         return

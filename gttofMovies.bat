@@ -1,0 +1,1 @@
+python "D:\Developed\Automation\mtut\gttof.py" --dirPath D:\paradise\Movies\yts --exts "*.mp4" "*.mkv" "*.srt" --outPath D:\paradise\Movies\Movies
