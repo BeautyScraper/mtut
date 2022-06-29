@@ -52,6 +52,20 @@ def fileListCopy(fileList,dstination):
     moveByFastCopy(tempFileName,dstination)
     Path(tempFileName).unlink()
 
+def filelist(fp):
+    with open(fp,'r') as fpp:
+        # lines = [x.strip() for x in fpp.readlines()]
+        lines = fpp.readlines()
+    return lines
+
+def diffile(fp1,fp2):
+    fp1_set = set(filelist(fp1))
+    fp2_set = set(filelist(fp2))
+    final = list(fp1_set.difference(fp2_set))
+    with open(fp1,'w') as fpw:
+        fpw.writelines(final)
+    
+
 def frad(ext='*.mkv'):#fileRenameAccordingToDir 
     validFiles = Path.cwd().rglob(ext)
     for vf in validFiles:
