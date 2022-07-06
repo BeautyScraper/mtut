@@ -7,6 +7,12 @@ import numpy as np
 import os
 import re
 
+def dir_to_list(dir_path):
+    dir_path = Path(dir_path)
+    file_list = [str(x) for x in dir_path.glob('*')]
+    return file_list
+
+
 def listToFile(l,filename='D:\\ListFile.txt'):
     k = [x.strip('\n')+'\n' for x in l]
     k = list(set(k))
