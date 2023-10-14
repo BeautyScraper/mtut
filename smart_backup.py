@@ -19,22 +19,24 @@ def validate(src_dir,dst_dir):
         dst_dir.mkdir(exist_ok=True,parents=True)
 
 
-def copy_perc(src_dir,dst_dir,percentage=100):
+def copy_perc(src_dir,dst_dir,file_count=-1):
     validate(src_dir,dst_dir)
     file_list = dir_to_list(src_dir)
     total_length = len(file_list)
-    sel_count = int((total_length * percentage)/100)
+    sel_count = file_count
+    if file_count < 0:
+        sel_count = total_length
     if sel_count == 0:
         return
-    if percentage < 100:
-        shuffle(file_list)
+    # if percentage < 100:
+    #     shuffle(file_list)
     fileListCopy(file_list[:sel_count], dst_dir)
 
 def main():
     df = pd.read_csv(csv_file_path)
     for index,row in df.iterrows():
-        if  int(row['percentage']) != 100:
-            copy_perc(row['Destination'], row['Source'], 100)
+        if  int(row['percentage']) != -1:
+            copy_perc(row['Destination'], row['Source'], -1)
         copy_perc(row['Source'], row['Destination'], int(row['percentage']))
 
 
